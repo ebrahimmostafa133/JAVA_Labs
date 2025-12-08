@@ -1,12 +1,5 @@
-// Custom Exception Class
-class OperationException extends Exception {
-    public OperationException(String message) {
-        super(message);
-    }
-}
-
 // Class that throws exceptions
-class OperationHandler {
+public class OperationHandler {
 
     public void performAddition() throws OperationException {
         throw new OperationException("Error during addition operation");
@@ -20,4 +13,3 @@ class OperationHandler {
         throw new OperationException("Error during multiplication operation");
     }
 }
-

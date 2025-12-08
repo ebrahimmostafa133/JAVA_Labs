@@ -1,4 +1,4 @@
-public class mainClass {
+public class MainClass {
     public static void main(String[] args) {
 
         OperationHandler handler = new OperationHandler();
@@ -31,5 +31,4 @@ public class mainClass {
             System.out.println("Finally block executed");
         }
     }
-
 }

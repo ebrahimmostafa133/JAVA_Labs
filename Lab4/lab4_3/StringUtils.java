@@ -2,26 +2,22 @@ import java.util.function.BiPredicate;
 
 class StringUtils {
     
-    // Using BiPredicate (no need to create custom interface!)
-    public static String betterString(String s1, String s2, BiPredicate<String, String> comparator) {
-        if (comparator.test(s1, s2)) {
-            return s1;  // return first if lambda returns true
+    public static String selectString(String str1, String str2, BiPredicate<String, String> condition) {
+        if (condition.test(str1, str2)) {
+            return str1;  
         } else {
-            return s2;  // return second if lambda returns false
+            return str2;  
         }
     }
     
     public static void main(String[] args) {
-        String string1 = "Hello";
-        String string2 = "World!";
+        String str1 = "Hello";
+        String str2 = "World!";
         
-        // Test 1: Return the longer string
-        String longer = betterString(string1, string2, (s1, s2) -> s1.length() > s2.length());
-        System.out.println("Longer string: " + longer);
+        String longerString = selectString(str1, str2, (s1, s2) -> s1.length() > s2.length());
+        System.out.println("Longer string: " + longerString);
         
-        // Test 2: Return the first string (always true)
-        String first = betterString(string1, string2, (s1, s2) -> true);
-        System.out.println("First string: " + first);
-      
+        String firstString = selectString(str1, str2, (s1, s2) -> true);
+        System.out.println("First string: " + firstString);
     }
 }
