@@ -1,0 +1,4 @@
+// Base abstract class
+public abstract class Shape {
+    abstract void draw();
+}
