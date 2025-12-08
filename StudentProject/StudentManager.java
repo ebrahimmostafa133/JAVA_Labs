@@ -45,15 +45,33 @@ public class StudentManager {
 
     public void addStudent() {
         Integer id = null;
+
         while (true) {
             try {
                 System.out.print("Enter Student ID: ");
                 id = Integer.parseInt(scan.nextLine());
-                break;
+
+                // ✅ Check for duplicate ID
+                boolean exists = false;
+                for (student s : students) {
+                    if (s.getStudentId().equals(id)) {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (exists) {
+                    System.out.println("✗ This ID already exists! Enter a different ID.");
+                    continue;
+                }
+
+                break; // ✅ Valid and unique ID → exit loop
+
             } catch (NumberFormatException e) {
                 System.out.println("✗ Invalid ID! Enter numbers only.");
             }
         }
+
         String name;
         while (true) {
             System.out.print("Enter Student Name: ");
@@ -74,6 +92,7 @@ public class StudentManager {
         students.add(newStudent);
         System.out.println("✓ Student added successfully!");
     }
+
 
 
     public void registerStudent(){
