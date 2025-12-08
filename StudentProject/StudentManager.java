@@ -51,7 +51,7 @@ public class StudentManager {
                 System.out.print("Enter Student ID: ");
                 id = Integer.parseInt(scan.nextLine());
 
-                // ✅ Check for duplicate ID
+                //  Check for duplicate ID
                 boolean exists = false;
                 for (student s : students) {
                     if (s.getStudentId().equals(id)) {
@@ -65,7 +65,7 @@ public class StudentManager {
                     continue;
                 }
 
-                break; // ✅ Valid and unique ID → exit loop
+                break; //  Valid and unique ID → exit loop
 
             } catch (NumberFormatException e) {
                 System.out.println("✗ Invalid ID! Enter numbers only.");
