@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class TestClass {
 
     // Generic method that accepts only child classes of Shape
-    public static <T extends Shape> void drawShapes(ArrayList<T> shapes) {
-        for (T shape : shapes) {
+    public static void drawShapes(ArrayList <? extends Shape> shapes) {
+        for (Shape shape : shapes) {
             shape.draw();
         }
     }

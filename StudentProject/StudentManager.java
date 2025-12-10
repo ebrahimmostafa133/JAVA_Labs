@@ -12,6 +12,7 @@ public class StudentManager {
     private ArrayList<student>students;
     private Scanner scan;
 
+    //constructor
     public StudentManager(){
         this.students = new ArrayList<>();
         this.scan = new Scanner(System.in);
