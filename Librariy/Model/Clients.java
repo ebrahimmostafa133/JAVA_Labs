@@ -7,7 +7,6 @@ public class Clients implements ILibraryEntity {
     private int id;
     private String name;
     private String email;
-    // Requirement 1: Collection of borrowed items
     private List<LibraryItem> borrowedItems; 
 
     public Clients(int id, String name, String email) {
@@ -17,12 +16,10 @@ public class Clients implements ILibraryEntity {
         this.borrowedItems = new ArrayList<>();
     }
     
-    // Getter for borrowed items
     public List<LibraryItem> getBorrowedItems() {
         return borrowedItems;
     }
     
-    // Implementation of read method from ILibraryEntity
     @Override
     public void getDetails() {
         System.out.println("Client ID: " + id);
@@ -31,14 +28,12 @@ public class Clients implements ILibraryEntity {
         System.out.println("Borrowed Items Count: " + borrowedItems.size());
         if (!borrowedItems.isEmpty()) {
             System.out.println("--- Borrowed Titles ---");
-            // Requirement 3: Use Stream to print borrowed titles
             borrowedItems.stream()
                          .map(LibraryItem::getTitle)
                          .forEach(title -> System.out.println(" - " + title));
         }
     }
     
-    // Standard getters and setters (setId, setName, setEmail, etc.)
     public int getId(){ return id; }
     public void setId(int id){ this.id = id; }
     public String getName(){ return name; }
@@ -46,13 +41,12 @@ public class Clients implements ILibraryEntity {
     public String getEmail(){ return email; }
     public void setEmail(String email){ this.email = email; }
 
-    // Default implementation for ILibraryEntity methods
     @Override
-    public void create() { /* Implementation delegated to ClientsHandler */ }
+    public void create() {}
     @Override
     public void read() { getDetails(); }
     @Override
-    public void update(String... params) { /* Implementation delegated to ClientsHandler */ }
+    public void update(String... params) {}
     @Override
-    public void delete() { /* Implementation delegated to ClientsHandler */ }
+    public void delete() {}
 }

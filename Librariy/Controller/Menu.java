@@ -6,12 +6,11 @@ import Model.Book;
 import Model.Clients;
 import Model.LibraryItem;
 import Model.Magazine;
-// FIX 1: Import all necessary exceptions
+
 import Utilities.ItemNotFoundException; 
 import Utilities.ClientNotFoundException;
 import Utilities.IDGenerator;
 
-// BONUS 6: User-Friendly Menu
 public class Menu {
     private LibraryHandler library;
     private ClientsHandler clients;
@@ -235,7 +234,6 @@ public class Menu {
             System.out.println("Invalid input. Please enter a number.");
             scanner.nextLine();
         } catch (ClientNotFoundException e) {
-            // FIX 4: Correct exception handling for ClientNotFoundException
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -256,7 +254,6 @@ public class Menu {
             System.out.println("Invalid input. Please enter a number.");
             scanner.nextLine();
         } catch (ClientNotFoundException e) {
-            // FIX 4: Correct exception handling
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -272,7 +269,6 @@ public class Menu {
             System.out.println("Invalid input. Please enter a number.");
             scanner.nextLine();
         } catch (ClientNotFoundException e) {
-            // FIX 4: Correct exception handling
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -316,12 +312,10 @@ public class Menu {
 
         try {
             Clients client = clients.getClientById(clientId)
-                                    // FIX 2: Correct lambda syntax for orElseThrow
                                     .orElseThrow(() -> new ClientNotFoundException("Client ID " + clientId + " not found."));
             
             library.borrowItem(itemId, client);
         } catch (ClientNotFoundException | ItemNotFoundException e) {
-            // FIX 3: Catch both relevant custom exceptions
             System.out.println("Borrow Failed: " + e.getMessage());
         }
     }
@@ -337,12 +331,10 @@ public class Menu {
 
         try {
             Clients client = clients.getClientById(clientId)
-                                    // FIX 2: Correct lambda syntax for orElseThrow
                                     .orElseThrow(() -> new ClientNotFoundException("Client ID " + clientId + " not found."));
             
             library.returnItem(itemId, client);
         } catch (ClientNotFoundException | ItemNotFoundException e) {
-            // FIX 3: Catch both relevant custom exceptions
             System.out.println("Return Failed: " + e.getMessage());
         }
     }

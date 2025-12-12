@@ -1,5 +1,4 @@
 package Model;
-// Book.java
 public class Book extends LibraryItem {
     
     public Book(int id, String title, int stock) {
@@ -14,7 +13,6 @@ public class Book extends LibraryItem {
         System.out.println("Type: Book | ID: "+id +" | Title: "+ title +" | Total Stock: " + stock + " | Available: " + availableCopies);
     }
 
-    // Standard getters and setters for id, title, stock, availableCopies
     @Override
     public int getStock() { return stock; }
     @Override
@@ -23,7 +21,6 @@ public class Book extends LibraryItem {
     public int getAvailableCopies() { return availableCopies; }
     @Override
     public void setAvailableCopies(int availableCopies) { this.availableCopies = availableCopies; }
-    // ... (rest of the overridden methods like setId, setTitle, etc.)
     @Override
     public int getId(){ return id; }
     @Override

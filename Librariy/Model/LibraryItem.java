@@ -16,13 +16,12 @@ public abstract class LibraryItem implements ILibraryEntity {
     abstract public int getAvailableCopies();
     abstract public void setAvailableCopies(int availableCopies);
     
-    // Default implementation for ILibraryEntity methods
     @Override
-    public void create() { /* Implementation delegated to LibraryHandler */ }
+    public void create() {}
     @Override
     public void read() { getDetails(); }
     @Override
-    public void update(String... params) { /* Implementation delegated to LibraryHandler */ }
+    public void update(String... params) {}
     @Override
-    public void delete() { /* Implementation delegated to LibraryHandler */ }
+    public void delete() {}
 }

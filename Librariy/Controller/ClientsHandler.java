@@ -12,7 +12,6 @@ public class ClientsHandler {
         this.clients = clients;
     }
 
-    // Requirement 3: Use Stream to find client by ID
     public Optional<Clients> getClientById(int id) {
         return clients.stream()
                       .filter(client -> client.getId() == id)
@@ -23,7 +22,6 @@ public class ClientsHandler {
         clients.add(c);
     }
 
-    // Retrieve client by index
     public Clients getClient(int index) throws ClientNotFoundException {
         if (index < 0 || index >= clients.size()) {
             throw new ClientNotFoundException("Client not found at index: " + index);
@@ -38,7 +36,6 @@ public class ClientsHandler {
     }
 
     public void deleteClient(int index) throws ClientNotFoundException {
-        // Simple validation: check if client has borrowed items before deleting
         Clients c = getClient(index);
         if (!c.getBorrowedItems().isEmpty()) {
             System.out.println("Cannot delete client " + c.getName() + ". They still have " + c.getBorrowedItems().size() + " items borrowed.");
@@ -49,7 +46,6 @@ public class ClientsHandler {
   
     public void displayClients() {
         System.out.println("\n--- All Clients ---");
-        // Requirement 3: Use Stream to display details
         clients.stream().forEach(Clients::getDetails);
         System.out.println("-------------------");
     }

@@ -19,14 +19,12 @@ public class LibraryHandler {
         this.Items.add(item);
     }
     
-    // Requirement 3: Use Stream to find item by ID
     public Optional<LibraryItem> getItemById(int id) {
         return Items.stream()
                     .filter(item -> item.getId() == id)
                     .findFirst();
     }
 
-    // Retrieve by index (for legacy CRUD support)
     public LibraryItem getItem(int index) throws ItemNotFoundException {
         if (index < 0 || index >= Items.size()) {
             throw new ItemNotFoundException("Library Item not found at index: " + index);
@@ -36,7 +34,6 @@ public class LibraryHandler {
 
     public void displayItem(){
         System.out.println("\n--- All Library Items ---");
-        // Requirement 3: Use Stream to display details
         Items.stream().forEach(LibraryItem::getDetails);
         System.out.println("-------------------------");
     }
@@ -51,7 +48,6 @@ public class LibraryHandler {
         Items.remove(index);
     }
 
-    // Requirement 2: Borrow/Rent Feature
     public void borrowItem(int itemId, Clients client) throws ItemNotFoundException {
         Optional<LibraryItem> itemOpt = getItemById(itemId);
 
@@ -69,27 +65,8 @@ public class LibraryHandler {
             System.out.println("Error: " + item.getTitle() + " is currently out of stock.");
         }
 
-        // boolean alreadyBorrowed = client.getBorrowedItems().stream()
-        //                                 .anyMatch(i -> i.getId() == itemId);
-
-        // if (alreadyBorrowed) {
-        //     System.out.println("Error: " + client.getName() + " has already borrowed a copy of '" + item.getTitle() + "'.");
-        //     return;
-        // }
-        // // ----------------------------------------------------------------------
-
-        // if (item.getAvailableCopies() > 0) {
-        //     item.setAvailableCopies(item.getAvailableCopies() - 1);
-        //     client.getBorrowedItems().add(item);
-        //     System.out.println(item.getTitle() + " successfully borrowed by " + client.getName());
-        // } else {
-        //     // Requirement: If the item has borrowed (i.e., availableCopies is 0), 
-        //     // no other client can borrow it. (This is already covered here)
-        //     System.out.println("Error: '" + item.getTitle() + "' is currently out of stock. Available copies: 0.");
-        // }
     }
 
-    // Requirement 2: Return Feature
     public void returnItem(int itemId, Clients client) throws ItemNotFoundException {
         Optional<LibraryItem> itemOpt = getItemById(itemId);
 
@@ -99,7 +76,6 @@ public class LibraryHandler {
         
         LibraryItem itemToReturn = itemOpt.get();
 
-        // Requirement 4: Validation - Check if client actually borrowed this item
         boolean removed = client.getBorrowedItems().removeIf(
             item -> item.getId() == itemId
         );

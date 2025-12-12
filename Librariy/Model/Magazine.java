@@ -13,7 +13,6 @@ public class Magazine extends LibraryItem {
         System.out.println("Type: Magazine | ID: "+id +" | Title: "+ title +" | Total Stock: " + stock + " | Available: " + availableCopies);
     }
 
-    // Standard getters and setters for stock, availableCopies, etc.
     @Override
     public int getStock() { return stock; }
     @Override
@@ -22,7 +21,6 @@ public class Magazine extends LibraryItem {
     public int getAvailableCopies() { return availableCopies; }
     @Override
     public void setAvailableCopies(int availableCopies) { this.availableCopies = availableCopies; }
-    // ... (rest of the overridden methods like setId, setTitle, etc.)
     @Override
     public int getId(){ return id; }
     @Override
